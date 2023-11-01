@@ -1,7 +1,9 @@
 from llms import * 
 from langchain.chains import LLMChain
-def main_program(): 
-    article = input("Enter your story: ")  
+
+
+def main_program(article): 
+    # article = input("Enter your story: ")  
     text_llm_obj = TextBisonLLM()
     text_llm_chain = LLMChain(prompt=text_summarizer_prompt_template,
                         llm=text_llm_obj) 
@@ -13,5 +15,9 @@ def main_program():
     return picture_url
 
 if __name__ == "__main__": 
-    picture_url = main_program() 
-    print(picture_url)
+    import streamlit as st 
+    st.title("My Story Visualizer")
+    txt = st.text_area("Enter your paragraph", "") 
+    if st.button("Submit", type="primary"): 
+        picture_url = main_program(txt) 
+        st.image(picture_url)
