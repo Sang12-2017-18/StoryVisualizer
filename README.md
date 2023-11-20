@@ -15,3 +15,7 @@ Download the source code, and install requirements.
 Run the app using this command:
 
 streamlit run main.py
+
+## Sample Output
+
+![](/images/Demo_1.png)
